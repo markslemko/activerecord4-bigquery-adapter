@@ -146,9 +146,8 @@ module ActiveRecord
         # Executes an SQL statement, returning a PGresult object on success
         # or raising a PGError exception otherwise.
         def execute(sql, name = nil)
-          raise("execute called with: #{sql}")
           log(sql, name) do
-            @connection.query(sql)
+            exec_query(sql, name)
           end
         end
 
